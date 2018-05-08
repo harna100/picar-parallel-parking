@@ -41,7 +41,7 @@ class MyUltrasonic(object):
 		for i in range(sampleSize):
 			a = self.distance()
 			total += a
-		return int(total/sampleSize)
+		return float(total/sampleSize)
 
 	def less_than(self, alarm_gate):
 		dis = self.get_distance()
