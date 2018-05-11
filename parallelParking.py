@@ -47,7 +47,7 @@ while state != 5:
 		currDistance = side.getDistance()
 		if currDistance > 150:
 			continue
-		if math.fabs(currDistance - oldDistance) > 20:
+		if currDistance < 10:
 			state = 2
 			bw.speed = 0
 			sleep(1)
@@ -56,23 +56,25 @@ while state != 5:
 		sleep(0.1)
 	elif state == 2: # get past cone
 		bw.speed = 20
-		currDistance = side.getDistance()
-		if currDistance > 150:
-			continue
-		if math.fabs(currDistance - oldDistance) > 20:
-			state = 3
-			bw.speed = 0
-			sleep(1)
-			oldDistance = currDistance
-		oldDistance = currDistance
-		sleep(0.1)
+		sleep(3)
+		state = 3
+		# currDistance = side.getDistance()
+		# if currDistance > 150:
+		# 	continue
+		# if currDistance > 20:
+		# 	state = 3
+		# 	bw.speed = 0
+		# 	sleep(1)
+		# 	oldDistance = currDistance
+		# oldDistance = currDistance
+		# sleep(0.1)
 
 	elif state == 3: # sense second cone
 		bw.speed = 20
 		currDistance = side.getDistance()
 		if currDistance > 150:
 			continue
-		if math.fabs(currDistance - oldDistance) > 20:
+		if currDistance < 20:
 			state = 4
 			bw.speed = 0
 			sleep(1)
@@ -82,6 +84,6 @@ while state != 5:
 	elif state == 4: # back in
 		park()
 		state = 5
-		
+
 	elif state == 5: # make it even
 		break
