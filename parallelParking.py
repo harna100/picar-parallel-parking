@@ -4,26 +4,27 @@ from picar import back_wheels
 import front_wheels
 import MyUltrasonic
 from time import sleep
-from SunFounder_Ultrasonic_Avoidance import Ultrasonic_Avoidance
+# from SunFounder_Ultrasonic_Avoidance import Ultrasonic_Avoidance
+import Ultrasonic_Avoidance
 import math
 
 def park():
 	bw.backward()
 	bw.speed = 30
 	fw.turn_right()
-	time.sleep(2.3)
+	sleep(2.3)
 	fw.turn_left()
-	time.sleep(2)
+	sleep(2)
 	fw.turn_straight()
-	time.sleep(0.7)
+	sleep(0.7)
 	bw.forward()
-	time.sleep(0.8)
+	sleep(0.8)
 	bw.speed = 0
 
 
 #setup wheels
-bw = back_wheels.Back_Wheels(debug=True)
-fw = front_wheels.Front_Wheels(debug=True)
+bw = back_wheels.Back_Wheels()
+fw = front_wheels.Front_Wheels()
 
 fw.turning_max = 40
 fw.turning_offset = 30
@@ -44,9 +45,9 @@ while state != 5:
 	if state == 1: # sense first cone
 		bw.speed = 20
 		currDistance = side.getDistance()
-		if currDistance > 450:
+		if currDistance > 150:
 			continue
-		if math.abs(currDistance - oldDistance) > 40:
+		if math.fabs(currDistance - oldDistance) > 20:
 			state = 2
 			bw.speed = 0
 			sleep(2)
@@ -55,9 +56,9 @@ while state != 5:
 	elif state == 2: # get past cone
 		bw.speed = 20
 		currDistance = side.getDistance()
-		if currDistance > 450:
+		if currDistance > 150:
 			continue
-		if math.abs(currDistance - oldDistance) > 40:
+		if math.fabs(currDistance - oldDistance) > 20:
 			state = 3
 			bw.speed = 0
 			sleep(2)
@@ -67,9 +68,9 @@ while state != 5:
 	elif state == 3: # sense second cone
 		bw.speed = 20
 		currDistance = side.getDistance()
-		if currDistance > 450:
+		if currDistance > 150:
 			continue
-		if math.abs(currDistance - oldDistance) > 40:
+		if math.fabs(currDistance - oldDistance) > 20:
 			state = 4
 			bw.speed = 0
 			sleep(2)
