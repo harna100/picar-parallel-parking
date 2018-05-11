@@ -50,7 +50,8 @@ while state != 5:
 		if math.fabs(currDistance - oldDistance) > 20:
 			state = 2
 			bw.speed = 0
-			sleep(2)
+			sleep(1)
+			oldDistance = currDistance
 		oldDistance = currDistance
 		sleep(0.1)
 	elif state == 2: # get past cone
@@ -61,7 +62,8 @@ while state != 5:
 		if math.fabs(currDistance - oldDistance) > 20:
 			state = 3
 			bw.speed = 0
-			sleep(2)
+			sleep(1)
+						oldDistance = currDistance
 		oldDistance = currDistance
 		sleep(0.1)
 
@@ -73,11 +75,13 @@ while state != 5:
 		if math.fabs(currDistance - oldDistance) > 20:
 			state = 4
 			bw.speed = 0
-			sleep(2)
+			sleep(1)
+			oldDistance = currDistance
 		oldDistance = currDistance
 		sleep(0.1)
 	elif state == 4: # back in
 		park()
+		state = 5
 		
 	elif state == 5: # make it even
 		break
