@@ -63,7 +63,7 @@ while state != 5:
 			state = 3
 			bw.speed = 0
 			sleep(1)
-						oldDistance = currDistance
+			oldDistance = currDistance
 		oldDistance = currDistance
 		sleep(0.1)
 
