@@ -14,23 +14,25 @@ def park(frontUA, backUA, frontWheels, backWheels):
 	frontWheels.turn_right()
 	sleep(2.3)
 	frontWheels.turn_left()
-	sleep(1.7)
+	sleep(2)
 	frontWheels.turn_straight()
 	# sleep(0.7)
 	timeElapsed = 0
 	while True:
 		dist = backUA.getDistance()
-		if dist < 5 or timeElapsed >= 0.7:
+		if dist < 7 or timeElapsed >= 0.7:
+			print(timeElapsed)
+			backWheels.forward()
 			break
 		sleep(0.05)
 		timeElapsed += 0.05
 
-	backWheels.forward()
 	# sleep(0.8)
 	timeElapsed = 0
 	while True:
 		dist = frontUA.get_distance()
 		if dist < 5 or timeElapsed >= 0.8:
+			print(timeElapsed)
 			break
 		sleep(0.05)
 		timeElapsed += 0.05
@@ -55,7 +57,7 @@ bw = back_wheels.Back_Wheels()
 fw = front_wheels.Front_Wheels()
 
 fw.turning_max = 40
-fw.turning_offset = 55
+fw.turning_offset = 40
 fw.turn_straight()
 
 bw.speed = 0
