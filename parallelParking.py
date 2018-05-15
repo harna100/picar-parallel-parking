@@ -20,8 +20,11 @@ def park(frontUA, backUA, frontWheels, backWheels):
 	timeElapsed = 0
 	while True:
 		dist = backUA.getDistance()
+		if(dist > 70):
+			continue
 		if dist < 7 or timeElapsed >= 0.7:
 			print(timeElapsed)
+			print(dist)
 			backWheels.forward()
 			break
 		sleep(0.05)
@@ -31,8 +34,9 @@ def park(frontUA, backUA, frontWheels, backWheels):
 	timeElapsed = 0
 	while True:
 		dist = frontUA.get_distance()
-		if dist < 5 or timeElapsed >= 0.8:
+		if dist < 7 or timeElapsed >= 0.8:
 			print(timeElapsed)
+			print(dist)
 			break
 		sleep(0.05)
 		timeElapsed += 0.05
