@@ -14,7 +14,7 @@ def park(frontUA, backUA, frontWheels, backWheels):
 	frontWheels.turn_right()
 	sleep(2.3)
 	frontWheels.turn_left()
-	sleep(2)
+	sleep(1.7)
 	frontWheels.turn_straight()
 	# sleep(0.7)
 	timeElapsed = 0
@@ -55,7 +55,7 @@ bw = back_wheels.Back_Wheels()
 fw = front_wheels.Front_Wheels()
 
 fw.turning_max = 40
-fw.turning_offset = 37
+fw.turning_offset = 55
 fw.turn_straight()
 
 bw.speed = 0
