@@ -16,6 +16,9 @@ def park(frontUA, backUA, frontWheels, backWheels):
 	frontWheels.turn_left()
 	sleep(2)
 	frontWheels.turn_straight()
+	bw.speed = 0
+	sleep(0.5)
+	bw.speed = 20
 	# sleep(0.7)
 	timeElapsed = 0
 	while True:
