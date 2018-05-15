@@ -16,10 +16,39 @@ def park(frontUA, backUA, frontWheels, backWheels):
 	frontWheels.turn_left()
 	sleep(2)
 	frontWheels.turn_straight()
-	sleep(0.7)
+	# sleep(0.7)
+	timeElapsed = 0
+	while True:
+		dist = backUA.getDistance()
+		if dist < 3 or timeElapsed >= 0.7:
+			break
+		sleep(0.05)
+		time += 0.05
+
 	backWheels.forward()
-	sleep(0.8)
+	# sleep(0.8)
+	timeElapsed = 0
+	while True:
+		dist = frontUA.getDistance()
+		if dist < 3 or timeElapsed >= 0.8:
+			break
+		sleep(0.05)
+		time += 0.05
+
 	backWheels.speed = 0
+
+def makeEven(frontUA, backUA, frontWheels, backWheels):
+	while True:
+		frontDist = frontUA.getDistance()
+		backDist = backUA.getDistance()
+		difference = math.fabs(frontDist-backDist)
+		if difference < 10:
+			break
+		if frontDist > backDist:
+			backWheels.forward()
+		elif backDist > frontDist:
+			backWheels.backward()
+		sleep(0.05)
 
 
 #setup wheels
@@ -86,4 +115,5 @@ while state != 5:
 		state = 5
 
 	elif state == 5: # make it even
+		makeEven(front,back,fw,bw)
 		break
