@@ -8,18 +8,18 @@ from time import sleep
 import Ultrasonic_Avoidance
 import math
 
-def park():
-	bw.backward()
-	bw.speed = 30
-	fw.turn_right()
+def park(frontUA, backUA, frontWheels, backWheels):
+	backWheels.backward()
+	backWheels.speed = 30
+	frontWheels.turn_right()
 	sleep(2.3)
-	fw.turn_left()
+	frontWheels.turn_left()
 	sleep(2)
-	fw.turn_straight()
+	frontWheels.turn_straight()
 	sleep(0.7)
-	bw.forward()
+	backWheels.forward()
 	sleep(0.8)
-	bw.speed = 0
+	backWheels.speed = 0
 
 
 #setup wheels
@@ -82,7 +82,7 @@ while state != 5:
 		oldDistance = currDistance
 		sleep(0.1)
 	elif state == 4: # back in
-		park()
+		park(front,back,fw,bw)
 		state = 5
 
 	elif state == 5: # make it even
