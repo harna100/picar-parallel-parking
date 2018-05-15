@@ -20,7 +20,7 @@ def park(frontUA, backUA, frontWheels, backWheels):
 	timeElapsed = 0
 	while True:
 		dist = backUA.getDistance()
-		if dist < 3 or timeElapsed >= 0.7:
+		if dist < 5 or timeElapsed >= 0.7:
 			break
 		sleep(0.05)
 		timeElapsed += 0.05
@@ -30,7 +30,7 @@ def park(frontUA, backUA, frontWheels, backWheels):
 	timeElapsed = 0
 	while True:
 		dist = frontUA.get_distance()
-		if dist < 3 or timeElapsed >= 0.8:
+		if dist < 5 or timeElapsed >= 0.8:
 			break
 		sleep(0.05)
 		timeElapsed += 0.05
@@ -69,7 +69,7 @@ front = Ultrasonic_Avoidance.Ultrasonic_Avoidance(20)
 
 state = 1
 oldDistance = side.getDistance()
-while state != 5:
+while state != 6:
 	if state == 1: # sense first cone
 		bw.speed = 20
 		currDistance = side.getDistance()
@@ -115,6 +115,7 @@ while state != 5:
 
 	elif state == 5: # make it even
 		makeEven(front,back,fw,bw)
+		state = 6
 		break
 
 bw.speed = 0
