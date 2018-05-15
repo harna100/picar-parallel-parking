@@ -71,7 +71,7 @@ state = 1
 oldDistance = side.getDistance()
 while state != 6:
 	if state == 1: # sense first cone
-		bw.speed = 20
+		bw.speed = 25
 		currDistance = side.getDistance()
 		if currDistance > 150:
 			continue
@@ -83,7 +83,7 @@ while state != 6:
 		oldDistance = currDistance
 		sleep(0.1)
 	elif state == 2: # get past cone
-		bw.speed = 20
+		bw.speed = 25
 		sleep(3)
 		state = 3
 		# currDistance = side.getDistance()
@@ -98,12 +98,13 @@ while state != 6:
 		# sleep(0.1)
 
 	elif state == 3: # sense second cone
-		bw.speed = 20
+		bw.speed = 25
 		currDistance = side.getDistance()
 		if currDistance > 150:
 			continue
 		if currDistance < 20:
 			state = 4
+			sleep(0.5)
 			bw.speed = 0
 			sleep(1)
 			oldDistance = currDistance
