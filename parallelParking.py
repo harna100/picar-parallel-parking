@@ -55,7 +55,7 @@ bw = back_wheels.Back_Wheels()
 fw = front_wheels.Front_Wheels()
 
 fw.turning_max = 40
-fw.turning_offset = 35
+fw.turning_offset = 37
 fw.turn_straight()
 
 bw.speed = 0
@@ -117,4 +117,4 @@ while state != 5:
 		makeEven(front,back,fw,bw)
 		break
 
-backWheels.speed = 0
+bw.speed = 0
